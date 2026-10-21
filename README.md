@@ -1,56 +1,54 @@
-# Welcome to your Expo app 👋
+# Ascend
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+Application mobile de suivi de la condition physique, développée en **React Native** dans le cadre de mon projet personnel de L3 Sciences du numérique à l'Université Catholique de Lille.
 
-## Get started
+Ascend réunit au même endroit le suivi de l'alimentation, des entraînements et de l'évolution du corps.
 
-1. Install dependencies
+## Fonctionnalités
 
-   ```bash
-   npm install
-   ```
+**Indispensables**
+- Compte et profil avec calcul automatique des besoins en calories et en macronutriments
+- Journal alimentaire par repas, avec recherche d'aliments via Open Food Facts
+- Création de séances (séries, répétitions, charges), suivi du cardio et des records personnels
+- Suivi du poids avec courbe d'évolution
+- Tableau de bord et graphiques hebdomadaires et mensuels
+- Export et suppression des données personnelles
 
-2. Start the app
+**Prévues**
+- Aliments favoris, recettes personnalisées, copie de repas
+- Mode « séance en cours » avec minuteur de repos, modèles de séances
+- Mensurations et rappels
+- Thème sombre, hydratation, badges
 
-   ```bash
-   npx expo start
-   ```
+## Technologies
 
-In the output, you'll find options to open the app in a
+| Domaine | Outil |
+|---|---|
+| Application mobile | React Native + Expo |
+| Langage | TypeScript |
+| Navigation et état | Expo Router, Zustand |
+| Compte et base de données | Supabase (PostgreSQL) |
+| Données alimentaires | API Open Food Facts |
+| Graphiques | react-native-gifted-charts |
+| Tests | Jest |
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
+## Installation
 
 ```bash
-npm run reset-project
+git clone https://github.com/TON_PSEUDO/ascend.git
+cd ascend
+npm install
+npx expo start
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+Scanne ensuite le QR code avec l'application **Expo Go** (Android / iOS) pour lancer Ascend sur ton téléphone.
 
-### Other setup steps
+## Tests
 
-- To set up ESLint for linting, run `npx expo lint`, or follow our guide on ["Using ESLint and Prettier"](https://docs.expo.dev/guides/using-eslint/)
-- If you'd like to set up unit testing, follow our guide on ["Unit Testing with Jest"](https://docs.expo.dev/develop/unit-testing/)
-- Learn more about the TypeScript setup in this template in our guide on ["Using TypeScript"](https://docs.expo.dev/guides/typescript/)
+```bash
+npm test
+```
 
-## Learn more
+## Auteur
 
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+**Ismail Rakeb Soussi**, L3 Sciences du numérique, Université Catholique de Lille (2026-2027)
