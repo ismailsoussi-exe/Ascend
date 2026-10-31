@@ -1,96 +1,63 @@
-import * as Device from 'expo-device';
-import { Platform, StyleSheet } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { Image } from 'expo-image';
+import { router } from 'expo-router';
+import { Pressable, StyleSheet, Text, View } from 'react-native';
 
-import { HintRow } from '@/components/hint-row';
-import { ThemedText } from '@/components/themed-text';
-import { ThemedView } from '@/components/themed-view';
-import { WebBadge } from '@/components/web-badge';
-import { BottomTabInset, MaxContentWidth, Spacing } from '@/constants/theme';
-
-function getDevMenuHint() {
-  if (Platform.OS === 'web') {
-    return <ThemedText type="small">use browser devtools</ThemedText>;
-  }
-  if (Device.isDevice) {
-    return (
-      <ThemedText type="small">
-        shake device or press <ThemedText type="code">m</ThemedText> in terminal
-      </ThemedText>
-    );
-  }
-  const shortcut = Platform.OS === 'android' ? 'cmd+m (or ctrl+m)' : 'cmd+d';
+const YourApp = () => {
   return (
-    <ThemedText type="small">
-      press <ThemedText type="code">{shortcut}</ThemedText>
-    </ThemedText>
+    <View style={styles.ecran}>
+      {/* Partie haute : logo + titre au centre */}
+      <View style={styles.haut}>
+        <Image
+          source={require('../../assets/images/ascend-logo.png')}
+          style={{ width: 120, height: 120 }}
+          contentFit="contain"
+        />
+        <Text style={styles.titre}>Ascend</Text>
+        <Text style={styles.slogan}>Mange mieux. Entraîne-toi plus fort.</Text>
+      </View>
+
+      {/* Partie basse : les boutons */}
+      <View style={styles.bas}>
+        <Pressable
+          onPress={() => router.push('/inscription')}
+          style={({ pressed }) => [styles.bouton, pressed && { opacity: 0.7 }]}
+        >
+          <Text style={styles.boutonTexte}>Commencer</Text>
+        </Pressable>
+
+        <Pressable
+          onPress={() => router.push('/connexion')}
+          style={({ pressed }) => [styles.boutonSecondaire, pressed && { opacity: 0.7 }]}
+        >
+          <Text style={styles.boutonSecondaireTexte}>J'ai déjà un compte</Text>
+        </Pressable>
+      </View>
+    </View>
   );
-}
-
-export default function HomeScreen() {
-  return (
-    <ThemedView style={styles.container}>
-      <SafeAreaView style={styles.safeArea}>
-        <ThemedView style={styles.heroSection}>
-          <ThemedText type="title" style={styles.title}>
-            Welcome to&nbsp;Ascend
-          </ThemedText>
-        </ThemedView>
-
-        <ThemedText type="code" style={styles.code}>
-          get started
-        </ThemedText>
-
-        <ThemedView type="backgroundElement" style={styles.stepContainer}>
-          <HintRow
-            title="Try editing"
-            hint={<ThemedText type="code">src/app/index.tsx</ThemedText>}
-          />
-          <HintRow title="Dev tools" hint={getDevMenuHint()} />
-          <HintRow
-            title="Fresh start"
-            hint={<ThemedText type="code">npm run reset-project</ThemedText>}
-          />
-        </ThemedView>
-
-        {Platform.OS === 'web' && <WebBadge />}
-      </SafeAreaView>
-    </ThemedView>
-  );
-}
+};
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    flexDirection: 'row',
-  },
-  safeArea: {
-    flex: 1,
-    paddingHorizontal: Spacing.four,
+  ecran: { flex: 1, backgroundColor: '#000000', padding: 24 },
+  haut: { flex: 1, justifyContent: 'center', alignItems: 'center' },
+  titre: { color: '#FFFFFF', fontSize: 34, fontWeight: '800', marginTop: 16 },
+  slogan: { color: '#8A97A6', fontSize: 16, marginTop: 8 },
+  bas: { paddingBottom: 30 },
+  bouton: {
+    backgroundColor: '#22C55E',
+    paddingVertical: 16,
+    borderRadius: 14,
     alignItems: 'center',
-    gap: Spacing.three,
-    paddingBottom: BottomTabInset + Spacing.three,
-    maxWidth: MaxContentWidth,
   },
-  heroSection: {
+  boutonTexte: { color: '#0F1720', fontSize: 17, fontWeight: '700' },
+  boutonSecondaire: {
+    paddingVertical: 16,
+    borderRadius: 14,
     alignItems: 'center',
-    justifyContent: 'center',
-    flex: 1,
-    paddingHorizontal: Spacing.four,
-    gap: Spacing.four,
+    marginTop: 12,
+    borderWidth: 1.5,
+    borderColor: '#22C55E',
   },
-  title: {
-    textAlign: 'center',
-  },
-  code: {
-    textTransform: 'uppercase',
-  },
-  stepContainer: {
-    gap: Spacing.three,
-    alignSelf: 'stretch',
-    paddingHorizontal: Spacing.three,
-    paddingVertical: Spacing.four,
-    borderRadius: Spacing.four,
-  },
+  boutonSecondaireTexte: { color: '#22C55E', fontSize: 17, fontWeight: '600' },
 });
+
+export default YourApp;
