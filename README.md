@@ -35,8 +35,8 @@ Ascend réunit au même endroit le suivi de l'alimentation, des entraînements e
 ## Installation
 
 ```bash
-git clone https://github.com/TON_PSEUDO/ascend.git
-cd ascend
+git clone https://github.com/ismailsoussi-exe/ascend.git
+cd Ascend
 npm install
 npx expo start
 ```
